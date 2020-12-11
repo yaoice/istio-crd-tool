@@ -1,0 +1,19 @@
+[server]
+port = 80
+host = "ice.xxx.com"
+
+[gin]
+mode = "debug"
+
+[log]
+level = "info"
+
+[mysql]
+host = "127.0.0.1"
+database = "gocele"
+user = "root"
+password = "123abc"
+
+[istio]
+kubeconfigs = "etc/k8s/multiple_k8s_clusters.yaml"
+crd = "virtualservice,serviceentry,destinationrule,gateway"

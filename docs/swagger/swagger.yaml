@@ -1,0 +1,125 @@
+basePath: /apis/v1
+definitions:
+  models.ErrorResponse:
+    properties:
+      code:
+        type: integer
+      message:
+        type: string
+    type: object
+host: '{{.Host}}'
+info:
+  contact:
+    email: xiabingyao@tencent.com
+    name: iceyao
+    url: https://www.xxx.com
+  description: This is a ice server.
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  title: Swagger ice
+  version: "1.0"
+paths:
+  /clusters:
+    get:
+      description: 获取cluster列表
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: integer
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+            type: object
+      summary: Get Clusters
+  /clusters/{cluster}/namespaces/{namespace}/export:
+    get:
+      description: Istio crd导出
+      parameters:
+      - description: the k8s cluster of istio crd
+        in: path
+        name: cluster
+        required: true
+        type: string
+      - description: the namespace of istio crd
+        in: path
+        name: namespace
+        required: true
+        type: string
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: integer
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+            type: object
+      summary: Export
+  /clusters/{cluster}/namespaces/{namespace}/import:
+    post:
+      description: Istio crd导入
+      parameters:
+      - description: the k8s cluster of istio crd
+        in: path
+        name: cluster
+        required: true
+        type: string
+      - description: the namespace of istio crd
+        in: path
+        name: namespace
+        required: true
+        type: string
+      produces:
+      - multipart/form-data
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: integer
+            type: array
+        "401":
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            $ref: '#/definitions/models.ErrorResponse'
+            type: object
+      summary: Import
+swagger: "2.0"

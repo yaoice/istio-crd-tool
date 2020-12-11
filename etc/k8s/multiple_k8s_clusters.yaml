@@ -1,0 +1,5 @@
+clusters:
+  - name: clustera
+    apiServerHost: https://1.1.1.1:8443
+  - name: cluster66
+    apiServerHost: https://1.1.1.2:8443
